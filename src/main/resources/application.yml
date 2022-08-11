@@ -1,0 +1,28 @@
+## Archivo de configuraciones comunes
+spring:
+    main.allow-bean-definition-overriding: true
+    data.rest.basePath: /
+    profiles:
+        active: prod
+    jackson:
+        default-property-inclusion: non_null
+        date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat
+        serialization:
+            write-dates-as-timestamps: false
+            write-date-timestamps-as-nanoseconds: false
+
+    http:
+        multipart:
+            enabled: true
+    mvc:
+        pathmatch:
+            matching-strategy: ant_path_matcher
+
+server.servlet.context-path: /
+
+info:
+    java-vendor: ${java.specification.vendor}
+    java-version: ${java.vm.version}
+    os-name: ${os.name}
+    os-arch: ${os.arch}
+    os-version: ${os.version}

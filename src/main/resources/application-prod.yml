@@ -1,0 +1,4 @@
+## Archivo de configuraciones para el perfil de producción
+server:
+    port: 8080
+    address: 0.0.0.0
