@@ -2,6 +2,8 @@ FROM quay.io/devfile/maven:3.8.1-openjdk-17-slim
 
 WORKDIR /build
 
+COPY pom.xml .
+
 COPY src src
 RUN mvn package -Dmaven.test.skip=true
 
