@@ -1,6 +1,6 @@
 schemaVersion: 2.2.0
 metadata:
-  name: sinic-prueba
+  name: java-springboot
   version: 1.1.0
   attributes:
     alpha.dockerimage-port: 8081
