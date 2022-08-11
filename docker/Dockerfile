@@ -4,9 +4,6 @@ WORKDIR /build
 
 COPY pom.xml .
 
-COPY src src
-RUN mvn package -Dmaven.test.skip=true
-
 FROM openjdk:11-jdk
 COPY --from=0 /target/xtf-to-json-1.0.jar /app/target/xtf-to-json-1.0.jar
 
