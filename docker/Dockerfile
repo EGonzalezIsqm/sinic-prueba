@@ -1,4 +1,6 @@
+FROM quay.io/devfile/maven:3.8.1-openjdk-17-slim
 
+WORKDIR /build
 
 COPY src src
 RUN mvn package -Dmaven.test.skip=true
@@ -80,7 +82,7 @@ echo "Unsupported arch: ${ARCH}"; \
   apk del --purge .fetch-deps; \
   rm -rf /var/cache/apk/*; \
   rm -rf /tmp/openjdk.tar.gz;
-  
+
   ENV JAVA_HOME=/opt/java/openjdk \
   PATH="/opt/java/openjdk/bin:$PATH"
 
