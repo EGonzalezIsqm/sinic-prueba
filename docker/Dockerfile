@@ -3,8 +3,8 @@ FROM quay.io/devfile/maven:3.8.1-openjdk-17-slim
 WORKDIR /build
 
 # Build dependency offline to streamline build
-COPY pom.xml .
-RUN mvn -s configuration\settings.xml dependency:copy-dependencies
+COPY settings.xml .
+RUN mvn -s settings.xml dependency:go-offline
 
 COPY src src
 RUN mvn package -Dmaven.test.skip=true
