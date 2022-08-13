@@ -19,8 +19,6 @@ ENTRYPOINT [ "java", "-jar", "/app/target/xtf-to-json-1.0.jar", "--server.port=8
   FROM osgeo/gdal:alpine-normal-3.1.2
   LABEL maintainer="juan@gkudos.com"
   ###########################################################################################################
-  ENV JAVA_VERSION jdk-11.0.5+10
-  
   WORKDIR /tmp
   
   RUN apk add zip curl nss openssl
@@ -60,35 +58,7 @@ ENTRYPOINT [ "java", "-jar", "/app/target/xtf-to-json-1.0.jar", "--server.port=8
   && mv /tmp/libz/usr/lib/libz.so* /usr/glibc-compat/lib \
   && apk del --purge .build-deps glibc-i18n \
   && rm -rf /tmp/*.apk /tmp/gcc /tmp/gcc-libs.tar.xz /tmp/libz /tmp/libz.tar.xz /var/cache/apk/*
-  
-  RUN set -eux; \
-  apk add --no-cache --virtual .fetch-deps curl; \
-  ARCH="$(apk --print-arch)"; \
-  case "${ARCH}" in \
-  ppc64el|ppc64le) \
-  ESUM='2e5343f2046844673f88a4297f5e5796979acb9880b291f965b4c9fa33201d78'; \
-  BINARY_URL='https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.5%2B10/OpenJDK11U-jre_ppc64le_linux_hotspot_11.0.5_10.tar.gz'; \
-  ;; \
-  amd64|x86_64) \
-  ESUM='2f08c469c9a8adea1b6ee3444ba2a8242a7e99d87976a077faf037a9eb7f884b'; \
-  BINARY_URL='https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.5%2B10/OpenJDK11U-jre_x64_linux_hotspot_11.0.5_10.tar.gz'; \
-  ;; \
-  *) \
-echo "Unsupported arch: ${ARCH}"; \
-  exit 1; \
-  ;; \
-  esac; \
-  curl -LfsSo /tmp/openjdk.tar.gz ${BINARY_URL}; \
-  echo "${ESUM} */tmp/openjdk.tar.gz" | sha256sum -c -; \
-  mkdir -p /opt/java/openjdk; \
-  cd /opt/java/openjdk; \
-  tar -xf /tmp/openjdk.tar.gz --strip-components=1; \
-  apk del --purge .fetch-deps; \
-  rm -rf /var/cache/apk/*; \
-  rm -rf /tmp/openjdk.tar.gz;
 
-  ENV JAVA_HOME=/opt/java/openjdk \
-  PATH="/opt/java/openjdk/bin:$PATH"
 
 
 
