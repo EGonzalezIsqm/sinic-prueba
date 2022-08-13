@@ -5,10 +5,8 @@ WORKDIR /build
 # Build dependency offline to streamline build
 COPY pom.xml .
 COPY settings.xml .
-RUN mvn -s settings.xml dependency:go-offline
+RUN mvn -e -Popenshift -DskipTests -Dcom.redhat.xpaas.repo.redhatga -Dfabric8.skip=true -Djkube.skip=true --batch-mode -Djava.net.preferIPv4Stack=true -s /tmp/src/configuration/settings.xml -Dmaven.repo.local=/tmp/artifacts/m2 package
 
-COPY src src
-RUN mvn package -Dmaven.test.skip=true
 
 FROM openjdk:11-jdk
 COPY --from=0 /target/xtf-to-json-1.0.jar /app/target/xtf-to-json-1.0.jar
