@@ -9,7 +9,7 @@ RUN mvn -s settings.xml dependency:go-offline package
 
 
 FROM openjdk:11-jdk
-COPY --from=0 /target/xtf-to-json-1.0.jar /app/target/xtf-to-json-1.0.jar
+COPY --from=0 /build/target/xtf-to-json-1.0.jar /app/target/xtf-to-json-1.0.jar
 
 EXPOSE 8081
 ENTRYPOINT [ "java", "-jar", "/app/target/xtf-to-json-1.0.jar", "--server.port=8081" ]
