@@ -98,16 +98,26 @@
 	</dependencies>
 
 	<build>
-		<pluginManagement>
 			<plugins>
-				<plugin>
+
+			<plugin>
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-maven-plugin</artifactId>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
+				<configuration>
+					<mainClass>co.gov.igac.snc.xtfajson</mainClass>
+				</configuration>
 
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+				</plugin>
+
+			</plugins>
+	</build>
 
 
 </project>
