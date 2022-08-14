@@ -8,8 +8,7 @@ COPY settings.xml .
 COPY src src
 RUN mvn -s settings.xml dependency:go-offline package -Dmaven.test.skip=true
 
-COPY src src
-RUN mvn package -Dmaven.test.skip=true
+
 
 FROM openjdk:11-jdk
 COPY --from=0 /build/target/xtf-to-json-1.0.jar /app/target/xtf-to-json-1.0.jar
