@@ -16,18 +16,13 @@
 	<description>microservicio para convertir archivo XTF a JSON</description>
 	<packaging>jar</packaging>
 
-	<distributionManagement>
+	<repositories>
 		<repository>
-			<id>igac-releases</id>
-			<name>Repositorio IGAC releases</name>
-			<url>http://nexus-repo.apps.igac.gov.co/repository/igac-releases/</url>
-		</repository>
-		<snapshotRepository>
 			<id>igac-central</id>
-			<name>Repositorio IGAC central</name>
 			<url>http://nexus-repo.apps.igac.gov.co/repository/igac-central/</url>
-		</snapshotRepository>
-	</distributionManagement>
+		</repository>
+	</repositories>
+
 
 
 	<properties>
