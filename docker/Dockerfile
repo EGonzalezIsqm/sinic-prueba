@@ -16,3 +16,4 @@ EXPOSE 8081
 ENTRYPOINT [ "java", "-jar", "/app/target/xtf-to-json-1.0.jar", "--server.port=8081" ]
 
 FROM osgeo/gdal:alpine-normal-3.1.2
+LABEL maintainer="juan@gkudos.com"
