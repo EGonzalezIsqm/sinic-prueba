@@ -1,4 +1,4 @@
-FROM osgeo/gdal
+
 
 FROM quay.io/devfile/maven:3.8.1-openjdk-11-slim
 WORKDIR /build
@@ -14,3 +14,5 @@ COPY --from=0 /target/xtf-to-json-1.0.jar /app/target/xtf-to-json-1.0.jar
 
 EXPOSE 8081
 ENTRYPOINT [ "java", "-jar", "/app/target/xtf-to-json-1.0.jar", "--server.port=8081" ]
+
+FROM osgeo/gdal
