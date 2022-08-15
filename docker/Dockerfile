@@ -60,6 +60,7 @@ RUN set -eux; \
 ENV JAVA_HOME=/opt/java/openjdk \
     PATH="/opt/java/openjdk/bin:$PATH"
 
+FROM quay.io/devfile/maven:3.8.1-openjdk-11-slim
 WORKDIR /build
 
 # Build dependency offline to streamline build
