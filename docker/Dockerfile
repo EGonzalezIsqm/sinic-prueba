@@ -1,4 +1,4 @@
-FROM osgeo/gdal:alpine-normal-3.1.2
+FROM osgeo/gdal
 
 FROM quay.io/devfile/maven:3.8.1-openjdk-11-slim
 WORKDIR /build
